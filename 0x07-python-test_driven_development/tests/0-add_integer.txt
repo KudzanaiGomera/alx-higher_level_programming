@@ -1,0 +1,52 @@
+add_integer module
+------------------
+
+Importing "add_integer"
+-----------------------
+
+Import our .py file
+>>> add_integer = __import__('0-add_integer').add_integer
+
+Testing for two int numbers
+>>> add_integer(1, 2)
+3
+
+Testing one argument
+>>> add_integer(1)
+99
+
+Testing string as second argument
+>>> add_integer(1, "2")
+Traceback (most recent call last):
+TypeError: b must be an integer
+
+Testing list as first argument
+>>> add_integer([1, 2, 3], 2)
+Traceback (most recent call last):
+TypeError: a must be an integer
+
+Testing for two floats
+>>> add_integer(1.2, 2.3)
+3
+
+Testing for two negative floats
+>>> add_integer(-4, -5)
+-9
+
+Testing for adding float numbers and integer
+>>> add_integer(-9.1, 5.9)
+-4
+
+Testing for adding zero and integer
+>>> add_integer(0, 424.2)
+424
+
+Testing for float infinity
+>>> add_integer(2, float("inf"))
+Traceback (most recent call last):
+OverflowError: cannot convert float infinity to integer
+
+Testing for NaN
+>>> add_integer(5, float("nan"))
+Traceback (most recent call last):
+ValueError: cannot convert float NaN to integer

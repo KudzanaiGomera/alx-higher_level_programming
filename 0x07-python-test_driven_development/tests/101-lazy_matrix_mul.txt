@@ -1,0 +1,81 @@
+lazy_matrix_mul module
+----------------------
+
+Importing "lazy_matrix_mul"
+---------------------------
+
+Import file
+>>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+Testing for a valid case
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+array([[ 7, 10],
+       [15, 22]])
+
+Testing for a valid case
+>>> lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+array([[13, 16]])
+
+Testing missing 1 argument
+>>> lazy_matrix_mul([[1, 2], [3, 4]])
+Traceback (most recent call last):
+TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+
+Testing no arguments
+>>> lazy_matrix_mul()
+Traceback (most recent call last):
+TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+Test for first argument not being a list
+>>> lazy_matrix_mul("[]", [[], []])
+Traceback (most recent call last):
+ValueError: Scalar operands are not allowed, use '*' instead
+
+Test for second argument not being a list
+>>> lazy_matrix_mul([[], []], "[]")
+Traceback (most recent call last):
+ValueError: Scalar operands are not allowed, use '*' instead
+
+Test for first argument not being a list of lists
+>>> lazy_matrix_mul(["a", "b"], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+TypeError: invalid data type for einsum
+
+Test for second argument not being a list of lists
+>>> lazy_matrix_mul([[1, 2], [3, 4]], ["a", "b"])
+Traceback (most recent call last):
+TypeError: invalid data type for einsum
+
+Test for first argument being empty
+>>> lazy_matrix_mul([], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+ValueError: shapes (0,) and (2,2) not aligned: 0 (dim 0) != 2 (dim 0)
+
+Test for second argument being empty
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[], []])
+array([], shape=(2, 0), dtype=int64)
+
+Test for first argument containing non integer elements
+>>> lazy_matrix_mul([["1", 2], [3, 4]], [[5, 6], [7, 8]])
+Traceback (most recent call last):
+TypeError: invalid data type for einsum
+
+Test for second argument containing non integer elements
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, "8"]])
+Traceback (most recent call last):
+TypeError: invalid data type for einsum
+
+Test for first argument not being a rectangle
+>>> lazy_matrix_mul([[1, 2], [3, 4, 9]], [[5, 6], [7, 8]])
+Traceback (most recent call last):
+ValueError: setting an array element with a sequence.
+
+Test for second argument not being a rectangle
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8, 9]])
+Traceback (most recent call last):
+ValueError: setting an array element with a sequence.
+
+Test for matrices that cannot be multiplied
+>>> lazy_matrix_mul([[1, 2, 3], [3, 4, 5]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+ValueError: shapes (2,3) and (2,2) not aligned: 3 (dim 1) != 2 (dim 0)

@@ -1,0 +1,44 @@
+say_my_name module
+------------------
+
+Importing "say_my_name"
+-----------------------
+
+Import file
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Testing for a valid input
+>>> say_my_name("Fady", "Hanna")
+My name is Fady Hanna
+
+Testing for second valid input
+>>> say_my_name("Fady", "Hanna")
+My name is Fady Hanna
+
+Testing for 3rd valid input
+>>> say_my_name("Fady")
+My name is Fady 
+
+Testing for invalid input
+>>> say_my_name(12, "White")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+Testing for number input
+>>> say_my_name("Fady", 12)
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+Testing for two numbers
+>>> say_my_name(123, 45)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+Testing numbers as strings
+>>> say_my_name("11", "06 ")
+My name is 11 06 
+
+Testing for any missing arguments
+>>> say_my_name()
+Traceback (most recent call last):
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'

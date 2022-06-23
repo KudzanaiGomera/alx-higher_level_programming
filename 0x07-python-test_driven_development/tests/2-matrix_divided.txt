@@ -1,0 +1,95 @@
+matrix_divided module
+---------------------
+
+Importing "matrix_divided"
+--------------------------
+
+Import file
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+Testing for a valid list
+>>> matrix = [
+... [1, 2, 3],
+... [4, 5, 6]]
+>>> matrix_divided(matrix, 3)
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+Testing for a valid list
+>>> matrix_float = [
+... [1, 2, 3.0],
+... [4, 5.0, 6]]
+>>> matrix_divided(matrix_float, 3)
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+Testing for an invalid list
+>>> regular_list = [1,2,3]
+>>> matrix_divided(regular_list, 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Testing for an invalid list
+>>> matrix_divided("hello", 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Testing for an invalid list
+>>> matrix_string = [
+... [1, 2, "3"],
+... [4, 5, 6]]
+>>> matrix_divided(matrix_string, 3)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Testing for lists with same size 
+>>> matrix_diffsize = [
+... [1, 2, 3],
+... [4, 5, 6, 7]]
+>>> matrix_divided(matrix_diffsize, 3)
+Traceback (most recent call last):
+TypeError: Each row of the matrix must have the same size
+
+Testing for dividend being a number
+>>> matrix_divided(matrix, "3")
+Traceback (most recent call last):
+TypeError: div must be a number
+
+Testing for div non zero
+>>> matrix_divided(matrix, 0)
+Traceback (most recent call last):
+ZeroDivisionError: division by zero
+
+Testing for long lists
+>>> matrix_diffsize = [
+... [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+... [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]]
+>>> matrix_divided(matrix_diffsize, 1.2)
+[[0.83, 1.67, 2.5, 3.33, 4.17, 5.0, 5.83, 6.67, 7.5, 8.33], [9.17, 10.0, 10.83, 11.67, 12.5, 13.33, 14.17, 15.0, 15.83, 16.67]]
+
+Testing for an empty matrix
+>>> empty = [[],[]]
+>>> matrix_divided(empty, 1)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Testing for an empty list
+>>> matrix_divided([], 1)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Testing if the original matrix was not modified
+>>> print(matrix_diffsize)
+[[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]]
+
+Testing for float(inf) as the second argument
+>>> matrix_divided(matrix, float("inf"))
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
+Testing for float(nan) as the second argument
+>>> matrix_divided(matrix, float("nan"))
+Traceback (most recent call last):
+TypeError: div must be a number
+
+Testing for mixed types in the matrix
+>>> mixed_matrix = [[1, 2, 3.0], [4, 5, 6]]
+>>> matrix_divided(mixed_matrix, 1)
+[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
