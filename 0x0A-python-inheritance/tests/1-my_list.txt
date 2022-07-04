@@ -1,0 +1,37 @@
+The ``my_list`` module
+======================
+
+Using ``my_list``
+-------------------
+
+Import file
+>>> MyList = __import__('1-my_list').MyList
+
+Test for empty list
+>>> my_list = MyList()
+>>> print(my_list)
+[]
+>>> my_list.print_sorted()
+[]
+
+Test for two elements
+>>> my_list.append(2)
+>>> my_list.append(1)
+>>> print(my_list)
+[2, 1]
+>>> my_list.print_sorted()
+[1, 2]
+
+Test for negative integers
+>>> my_list.append(-5)
+>>> my_list.print_sorted()
+[-5, 1, 2]
+
+Test for new list
+>>> my_list = MyList([5, 2, 9])
+>>> new_list = my_list.print_sorted()
+[2, 5, 9]
+>>> print(my_list)
+[5, 2, 9]
+>>> my_list is new_list
+False

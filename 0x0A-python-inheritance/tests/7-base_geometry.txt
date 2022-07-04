@@ -1,0 +1,66 @@
+The ``base_geometry`` module
+======================
+
+Using ``base_geometry``
+-------------------
+
+Import file
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Test for string as second argument
+>>> bg = BaseGeometry()
+>>> bg.integer_validator("my_int", "12")
+Traceback (most recent call last):
+TypeError: my_int must be an integer
+
+Test for missing second argument
+>>> bg.integer_validator("my_int")
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+Test for no arguments
+>>> bg.integer_validator()
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Test for empty string as first argumemt
+>>> bg.integer_validator("", 12)
+
+>>> bg.integer_validator("", "12")
+Traceback (most recent call last):
+TypeError:  must be an integer
+
+Test for list as second argument
+>>> bg.integer_validator("list", [1, 2, 3])
+Traceback (most recent call last):
+TypeError: list must be an integer
+
+Test for boolean as second argument
+>>> bg.integer_validator("list", True)
+Traceback (most recent call last):
+TypeError: list must be an integer
+
+Test for area
+>>> bg.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
+
+Test for zero
+>>> bg.integer_validator("my_int", 0)
+Traceback (most recent call last):
+ValueError: my_int must be greater than 0
+
+Test for tuple
+>>> bg.integer_validator("my_int", (2,))
+Traceback (most recent call last):
+TypeError: my_int must be an integer
+
+Test for set
+>>> bg.integer_validator("my_int", {5, 6})
+Traceback (most recent call last):
+TypeError: my_int must be an integer
+
+Test for None
+>>> bg.integer_validator("my_int", None)
+Traceback (most recent call last):
+TypeError: my_int must be an integer
